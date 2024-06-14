@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    networks:
+      - s-network
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_USER: mythresh
+      MYSQL_PASSWORD: 1234
+      MYSQL_DATABASE: spring
+    ports:
+      - "3307:3306"
+    networks:
+      - s-network
+networks:
+  s-network:
+    driver: bridge
